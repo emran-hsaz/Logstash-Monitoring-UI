@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.8", "3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        run: python -m py_compile lsmon.py lsdash.py tools/mock_logstash.py
+      - name: Unit tests (standard library only)
+        run: python -m unittest discover -s tests -v
+      - name: Install script syntax
+        run: bash -n deploy/install.sh

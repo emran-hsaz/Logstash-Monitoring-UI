@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.jsonl
+*.jsonl-*
+lsmon-*.json
+.venv/
+.idea/
+.vscode/
+.DS_Store

@@ -1,0 +1,21 @@
+[Unit]
+Description=lsdash - live web dashboard for Logstash pipelines
+Documentation=https://github.com/emran-hsaz/Logstash-Monitoring-UI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=logstash
+Group=logstash
+EnvironmentFile=-/etc/lsmon/lsdash.env
+ExecStart=/opt/lsmon/lsdash.py --config /etc/lsmon/lsdash.json
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

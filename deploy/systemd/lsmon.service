@@ -1,0 +1,17 @@
+[Unit]
+Description=lsmon - sample Logstash pipeline metrics into a JSONL history log
+Documentation=https://github.com/emran-hsaz/Logstash-Monitoring-UI
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=logstash
+Group=logstash
+EnvironmentFile=-/etc/lsmon/lsmon.env
+ExecStart=/opt/lsmon/lsmon.py --once --quiet --state-file /var/lib/lsmon/state.json --log-file /var/log/lsmon/metrics.jsonl
+# Read-only everywhere except its own state and log directories.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/var/lib/lsmon /var/log/lsmon

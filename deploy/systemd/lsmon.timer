@@ -1,0 +1,12 @@
+[Unit]
+Description=Run lsmon every 30 seconds
+Documentation=https://github.com/emran-hsaz/Logstash-Monitoring-UI
+
+[Timer]
+OnBootSec=60s
+OnUnitActiveSec=30s
+# Without this, systemd may coalesce the timer to once a minute.
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

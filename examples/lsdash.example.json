@@ -1,0 +1,18 @@
+{
+  "title": "Logstash Monitor",
+  "label": "PROD",
+  "bind": "0.0.0.0",
+  "port": 8600,
+  "refresh": 2,
+  "history": 60,
+  "cores": 8,
+  "nodes": [
+    {"name": "logstash-01", "url": "http://192.0.2.11:9600"},
+    {"name": "logstash-02", "url": "http://192.0.2.12:9600"},
+    {"name": "logstash-03", "url": "https://192.0.2.13:9600", "user": "monitor", "password_env": "LS03_PASSWORD"}
+  ],
+  "thresholds": {
+    "worker_util_warn": 80,
+    "stall_seconds": 120
+  }
+}

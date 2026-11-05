@@ -1,0 +1,18 @@
+{
+  "heap_warn": 75,
+  "heap_crit": 85,
+  "gc_young_warn": 2.0,
+  "gc_old_warn": 0.0,
+  "gc_old_crit": 1.0,
+  "gc_overhead_warn": 5.0,
+  "gc_overhead_crit": 10.0,
+  "worker_util_warn": 80,
+  "worker_util_crit": 95,
+  "backpressure_warn": 1.0,
+  "backpressure_crit": 5.0,
+  "queue_warn": 80,
+  "queue_crit": 95,
+  "fd_warn": 80,
+  "load_per_core_warn": 1.0,
+  "stall_seconds": 60
+}
